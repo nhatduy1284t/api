@@ -2,8 +2,12 @@ const express = require('express');
 const route = require('./src/routes');
 const db = require('./src/config/db/index');
 const app = express();
+const cors = require("cors");
 const port = process.env.PORT || 3000;
 require('dotenv').config();
+
+//Middlewares
+app.use(cors());
 
 //Body parser for POST request
 app.use(express.json());
@@ -17,5 +21,5 @@ db.connect();
 route(app);
 
 app.listen(process.env.PORT || 3000);
-
+console.log(process.env.test);
 
